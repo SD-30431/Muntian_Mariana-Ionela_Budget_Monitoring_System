@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="900.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Presentation.StartController">
+   <children>
+      <Label layoutX="187.0" layoutY="73.0" prefHeight="102.0" prefWidth="526.0" text="Welcome to Budget Monitor!">
+         <font>
+            <Font name="Bookman Old Style" size="34.0" />
+         </font>
+      </Label>
+      <CubicCurve controlX1="-50.0" controlX2="78.99996948242188" controlY1="-100.0" controlY2="52.19999694824219" endX="408.0" endY="-44.59999084472656" fill="IVORY" layoutX="294.0" layoutY="197.0" startX="-164.20001220703125" startY="-37.40000915527344" stroke="BLACK" />
+      <Button fx:id="loginUser" layoutX="308.0" layoutY="232.0" mnemonicParsing="false" onAction="#loginUserOnAction" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #FFFFF0;" text="Login as User">
+         <font>
+            <Font name="Bookman Old Style Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="loginAdmin" layoutX="308.0" layoutY="289.0" mnemonicParsing="false" onAction="#loginAdminOnAction" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #FFFFF0;" text="Login as Administrator">
+         <font>
+            <Font name="Bookman Old Style Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="createNewAccount" layoutX="308.0" layoutY="345.0" mnemonicParsing="false" onAction="#createNewAccountOnAction" prefHeight="44.0" prefWidth="246.0" style="-fx-background-color: #FFFFF0;" text="Create New Account">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <CubicCurve controlX1="168.34451293945312" controlX2="389.17657470703125" controlY1="-53.4000244140625" controlY2="-53.4000244140625" endX="734.9999389648438" endY="-37.4000244140625" fill="IVORY" layoutX="164.0" layoutY="543.0" startX="-164.20001220703125" startY="-37.40000915527344" stroke="BLACK" />
+      <CubicCurve controlX1="-73.56680297851562" controlX2="-172.0" controlY1="-43.90789794921875" controlY2="9.799991607666016" endX="-172.0" endY="270.49334716796875" fill="IVORY" layoutX="172.0" layoutY="54.0" startX="-172.0" startY="-54.000003814697266" stroke="BLACK" />
+      <CubicCurve controlX1="-164.00955200195312" controlX2="-96.8095703125" controlY1="118.29208374023438" controlY2="199.09207153320312" endX="-173.22348022460938" endY="227.62344360351562" fill="IVORY" layoutX="172.0" layoutY="279.0" startX="-172.0" startY="-54.000003814697266" stroke="BLACK" />
+      <CubicCurve controlX1="-272.966796875" controlX2="-172.00006103515625" controlY1="-26.907899856567383" controlY2="8.893501281738281" endX="-169.0001220703125" endY="251.49334716796875" fill="IVORY" layoutX="1069.0" layoutY="53.0" startX="-169.00006103515625" startY="-52.99999237060547" stroke="BLACK" />
+      <CubicCurve controlX1="-204.766845703125" controlX2="-241.5667724609375" controlY1="151.09207153320312" controlY2="209.60000610351562" endX="-173.22348022460938" endY="220.61172485351562" fill="IVORY" layoutX="1072.0" layoutY="283.0" startX="-172.0" startY="-54.000003814697266" stroke="BLACK" />
+   </children>
+</Pane>
