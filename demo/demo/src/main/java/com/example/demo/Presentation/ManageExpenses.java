@@ -35,14 +35,12 @@ public class ManageExpenses {
     @FXML
     private Button addNewProductButton;
 
-    // ComboBox for card numbers (populated from the user's budgets)
     @FXML
     private ComboBox<String> cardNoField;
 
     @FXML
     private Label cardNoLabel;
 
-    // ComboBox for category names
     @FXML
     private ComboBox<String> categoryField;
 
@@ -52,7 +50,6 @@ public class ManageExpenses {
     @FXML
     private Button chartExpensesButton;
 
-    // Using a DatePicker for the date.
     @FXML
     private DatePicker dateField;
 
@@ -65,7 +62,6 @@ public class ManageExpenses {
     @FXML
     private Button editProductButton;
 
-    // Rectangle that visually groups the form fields.
     @FXML
     private Rectangle form;
 
@@ -96,19 +92,14 @@ public class ManageExpenses {
     @FXML
     private Button saveButton;
 
-    // Enumeration to track the current operation mode.
     private enum OperationMode { NONE, ADD, EDIT, DELETE }
     private OperationMode currentMode = OperationMode.NONE;
 
-    // The current logged-in user.
     private User currentUser;
-
-    // Inject the repositories.
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final BudgetRepository budgetRepository;
 
-    // Constructor injection.
     public ManageExpenses(ProductRepository productRepository,
                           CategoryRepository categoryRepository,
                           BudgetRepository budgetRepository) {
@@ -119,11 +110,9 @@ public class ManageExpenses {
 
     @FXML
     public void initialize() {
-        // When entering the page, hide the entire form (rectangle and its controls).
         form.setVisible(false);
         setFormControlsVisibility(false, false, false);
 
-        // Optionally, populate the category combo box from the database.
         categoryField.getItems().clear();
         categoryRepository.findAll().forEach(cat -> categoryField.getItems().add(cat.getName()));
     }

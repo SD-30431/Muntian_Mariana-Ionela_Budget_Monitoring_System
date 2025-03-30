@@ -23,16 +23,16 @@ import java.util.stream.Collectors;
 public class HistoryController {
 
     @FXML
-    private AnchorPane anchorPane;  // Pane where product details will be added
+    private AnchorPane anchorPane;
 
     @FXML
     private Button chartExpensesButton;
 
     @FXML
-    private ComboBox<String> filterByCategory;  // For category filtering
+    private ComboBox<String> filterByCategory;
 
     @FXML
-    private DatePicker filterByDate;            // For date filtering
+    private DatePicker filterByDate;
 
     @FXML
     private Button goBack;
@@ -50,19 +50,16 @@ public class HistoryController {
     private Button manageExpenses;
 
     @FXML
-    private ScrollPane scrollPane;              // Scroll pane containing the anchorPane
+    private ScrollPane scrollPane;
 
     @FXML
-    private Button startFilterButton;           // Button to trigger filtering
+    private Button startFilterButton;
 
-    // The currently logged-in user (if needed for context)
     private User currentUser;
 
-    // Inject repositories for products and categories.
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
-    // Constructor injection
     public HistoryController(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
@@ -74,13 +71,11 @@ public class HistoryController {
      */
     @FXML
     public void initialize() {
-        // Populate the category ComboBox:
         filterByCategory.getItems().clear();
         filterByCategory.getItems().add("All");
         categoryRepository.findAll().forEach(cat -> filterByCategory.getItems().add(cat.getName()));
         filterByCategory.setValue("All");
 
-        // Display all products initially.
         List<Product> allProducts = productRepository.findAll();
         updateProductsDisplay(allProducts);
     }
@@ -92,7 +87,6 @@ public class HistoryController {
      */
     public void setUser(User user) {
         this.currentUser = user;
-        // You can update additional UI elements (e.g., a label with the username) if needed.
     }
 
     /**

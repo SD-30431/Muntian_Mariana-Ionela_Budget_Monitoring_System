@@ -12,13 +12,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // Configure your authentication manager, e.g. in-memory or with userDetailsService
+        //configure your authentication manager if wanted
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() // or configure properly
+                .csrf().disable()
                 .authorizeHttpRequests()
                 .anyRequest().permitAll();
     }

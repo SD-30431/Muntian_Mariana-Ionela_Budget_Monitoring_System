@@ -115,8 +115,6 @@ public class SigninUserController {
                 return;
             }
 
-            // *** IMPORTANT ***
-            // Update the user locally to include the newly created/retrieved budget.
             createdUser.getUserBudgets().add(new UserBudget(createdUser, budget));
 
             // 4. Switch to the main screen passing the created user.
@@ -127,7 +125,6 @@ public class SigninUserController {
         }
     }
 
-    // --- REST API methods ---
 
     private User createUser(String username, String password, double salary) throws Exception {
         User user = new User();

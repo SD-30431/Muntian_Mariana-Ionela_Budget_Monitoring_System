@@ -56,7 +56,6 @@ public class LoginAdminController {
         }
 
         try {
-            // On successful authentication, switch to the admin main page.
             JavaFXApplication.switchScene("MainAdminPage.fxml");
         } catch (Exception e) {
             errorLabel.setText("Failed to load admin main page.");

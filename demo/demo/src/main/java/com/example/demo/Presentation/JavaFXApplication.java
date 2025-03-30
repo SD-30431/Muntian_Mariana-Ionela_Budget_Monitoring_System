@@ -15,7 +15,7 @@ import java.io.IOException;
 public class JavaFXApplication extends Application {
 
     private static ConfigurableApplicationContext context;
-    private static Stage primaryStage;  // Store the primary stage
+    private static Stage primaryStage;
 
     public static void setContext(ConfigurableApplicationContext context) {
         JavaFXApplication.context = context;
@@ -32,7 +32,6 @@ public class JavaFXApplication extends Application {
         }
         primaryStage = stage;
 
-        // Use the version without a User when switching to a page that doesn't need one.
         switchScene("StartPage.fxml");
 
         primaryStage.setTitle("Budget Monitoring");
@@ -78,7 +77,6 @@ public class JavaFXApplication extends Application {
             ((HistoryController) controller).setUser(currentUser);
         }
 
-        // Set the scene on the stored primaryStage.
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

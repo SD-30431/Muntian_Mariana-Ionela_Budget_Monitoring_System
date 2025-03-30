@@ -15,13 +15,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		// Start the Spring Boot context and get the application context
 		ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-
-		// Pass the context to the JavaFX application
 		JavaFXApplication.setContext(context);
-
-		// Launch JavaFX application
 		Application.launch(JavaFXApplication.class, args);
 	}
 }

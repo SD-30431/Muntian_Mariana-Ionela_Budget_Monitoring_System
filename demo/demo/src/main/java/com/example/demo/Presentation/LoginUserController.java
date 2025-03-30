@@ -33,7 +33,6 @@ public class LoginUserController {
     private final UserRepository userRepository;
     private final SecurityHelper securityHelper;
 
-    // Inject dependencies via constructor.
     @Autowired
     public LoginUserController(UserRepository userRepository, SecurityHelper securityHelper) {
         this.userRepository = userRepository;

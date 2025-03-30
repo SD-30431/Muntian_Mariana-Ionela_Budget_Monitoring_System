@@ -50,10 +50,7 @@ public class ManageCards {
     @FXML
     private Button saveButton;
 
-    // Store the current user.
     private User currentUser;
-
-    // Repositories injected via constructor.
     private final BudgetRepository budgetRepository;
     private final UserBudgetRepository userBudgetRepository;
 
@@ -64,7 +61,6 @@ public class ManageCards {
 
     @FXML
     public void initialize() {
-        // Hide the form at startup.
         form.setVisible(false);
     }
 
@@ -79,7 +75,6 @@ public class ManageCards {
 
     @FXML
     void AddNewCardOnAction(ActionEvent event) {
-        // Show the form so the user can enter a new card.
         form.setVisible(true);
     }
 
@@ -116,7 +111,6 @@ public class ManageCards {
     @FXML
     void saveButtonOnAction(ActionEvent event) {
         try {
-            // Validate input: amount and card number must be provided.
             String amountText = amountField.getText();
             String cardNumber = cardNoField.getText();
 
@@ -128,20 +122,16 @@ public class ManageCards {
 
             double amount = Double.parseDouble(amountText);
 
-            // Create a new Budget instance.
             Budget newBudget = new Budget(amount, cardNumber);
             newBudget = budgetRepository.save(newBudget);
 
-            // Create a new UserBudget linking the current user and the new budget.
             UserBudget userBudget = new UserBudget(currentUser, newBudget);
             userBudget = userBudgetRepository.save(userBudget);
 
-            // Add the new UserBudget to the current user's list.
             currentUser.getUserBudgets().add(userBudget);
 
             System.out.println("New card added with card number: " + cardNumber);
 
-            // Hide the form and clear fields.
             form.setVisible(false);
             amountField.clear();
             cardNoField.clear();

@@ -23,7 +23,7 @@ public class User {
 
     // Fetch budgets eagerly to avoid lazy initialization issues
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-userBudget")
     private Set<UserBudget> userBudgets = new HashSet<>();
 
     public User() {}
