@@ -1,6 +1,6 @@
 package com.example.demo.Model;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -17,6 +17,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference  // Prevents infinite recursion during JSON serialization
     private Category category;
 
     public Product() {}

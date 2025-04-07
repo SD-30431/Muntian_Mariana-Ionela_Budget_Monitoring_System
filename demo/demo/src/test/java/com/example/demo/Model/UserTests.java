@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTests {
-
     @Test
     public void testDefaultConstructorAndSetters() {
         User user = new User();
@@ -18,7 +17,6 @@ public class UserTests {
         assertNotNull(user.getUserBudgets());
         assertTrue(user.getUserBudgets().isEmpty());
     }
-
     @Test
     public void testParameterizedConstructor() {
         User user = new User("testUser", "hashedPassword", 60000.0);

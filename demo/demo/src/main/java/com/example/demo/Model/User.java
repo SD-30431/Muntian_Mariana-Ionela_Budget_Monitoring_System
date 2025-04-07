@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.HashSet;
@@ -16,7 +17,8 @@ public class User {
     @Column(unique = true)
     private String username;
 
-    // Store the hashed password
+    // Store the hashed password but do not expose it in JSON responses
+    @JsonIgnore
     private String passwordHash;
 
     private Double salary;
@@ -35,21 +37,40 @@ public class User {
     }
 
     // Getters & Setters
-    public Long getId() { return id; }
 
-    public String getUsername() { return username; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setUsername(String username) { this.username = username; }
+    public String getUsername() {
+        return username;
+    }
 
-    public String getPasswordHash() { return passwordHash; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
-    public Double getSalary() { return salary; }
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
-    public void setSalary(Double salary) { this.salary = salary; }
+    public Double getSalary() {
+        return salary;
+    }
 
-    public Set<UserBudget> getUserBudgets() { return userBudgets; }
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
 
-    public void setUserBudgets(Set<UserBudget> userBudgets) { this.userBudgets = userBudgets; }
+    public Set<UserBudget> getUserBudgets() {
+        return userBudgets;
+    }
+
+    public void setUserBudgets(Set<UserBudget> userBudgets) {
+        this.userBudgets = userBudgets;
+    }
 }

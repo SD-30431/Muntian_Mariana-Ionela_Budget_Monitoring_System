@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonManagedReference   // This prevents the infinite recursion by marking this as the forward reference.
     private List<Product> products = new ArrayList<>();
 
     public Category() {}

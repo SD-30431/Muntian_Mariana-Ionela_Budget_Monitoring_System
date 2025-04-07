@@ -23,7 +23,6 @@ public class StartController {
     @FXML
     private Button loginUser;
 
-
     @FXML
     void createNewAccountOnAction(ActionEvent event) {
         switchScene("SinginUserPage.fxml", "Sign Up");
