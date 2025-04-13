@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6715870-693b-4d5a-bf41-c3821f47a2ba" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/api/routes.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/categories/categories.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/chart-expenses/chart-expenses.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/history/history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-admin/login-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/login-user/login-user.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-admin/main-admin.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/main-user/main-user.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-cards/manage-cards.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/manage-expenses/manage-expenses.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/admin.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/admin.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/budget.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/budget.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/category.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/user-budget.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/user-budget.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/sign-up/sign-up.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/start/start.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/start/start.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/start/start.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/app/start/start.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/main.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/main.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/my-angular-app/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/my-angular-app/src/server.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Backend/demo/demo/src/main/java/com/example/demo/Presentation/DemoApplication.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2vWw5329UMNo6II3cCQKflCtOqd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Mariana Ionela/MATERII/AN 3 - UTCN/SEM2/Software Design/A1/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6715870-693b-4d5a-bf41-c3821f47a2ba" name="Changes" comment="" />
+      <created>1744273952855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744273952855</updated>
+      <workItem from="1744273958166" duration="162000" />
+      <workItem from="1744356392942" duration="1077000" />
+      <workItem from="1744357750158" duration="699000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

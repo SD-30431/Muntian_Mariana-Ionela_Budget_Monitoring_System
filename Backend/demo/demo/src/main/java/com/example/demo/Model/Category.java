@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.example.demo.Model.Product;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @JsonManagedReference   // This prevents the infinite recursion by marking this as the forward reference.
+    @JsonManagedReference
     private List<Product> products = new ArrayList<>();
 
     public Category() {}
@@ -24,24 +25,10 @@ public class Category {
         this.name = name;
     }
 
-    // Getters & Setters
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    // Getters and setters
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public List<Product> getProducts() { return products; }
+    public void setProducts(List<Product> products) { this.products = products; }
 }

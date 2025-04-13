@@ -1,11 +1,9 @@
-// src/main/java/com/example/demo/BusinessLogic/ProductService.java
 package com.example.demo.BusinessLogic;
 
+import com.example.demo.DTO.CategoryExpenseRequest;
 import com.example.demo.Model.Product;
 import com.example.demo.Repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -13,11 +11,18 @@ import java.util.List;
 @Transactional
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Product save(Product product) {
         return productRepository.save(product);
+    }
+
+    public List<Product> findAllWithCategory() {
+        return productRepository.findAllWithCategory();
     }
 
     public List<Product> findAll() {
@@ -30,5 +35,14 @@ public class ProductService {
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    public List<CategoryExpenseRequest> getExpensesGroupedByCategory() {
+        return productRepository.findExpensesGroupedByCategory();
+    }
+
+    // New method to get purchased products for a specific user
+    public List<Product> getProductsByUser(Long userId) {
+        return productRepository.findByUserId(userId);
     }
 }

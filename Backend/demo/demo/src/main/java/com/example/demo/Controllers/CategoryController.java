@@ -1,11 +1,11 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.BusinessLogic.CategoryService;
 import com.example.demo.Model.Category;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.BusinessLogic.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,19 +15,16 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCategory(@RequestBody Category category) {
-        String name = category.getName();
-        if (name == null || name.trim().isEmpty()) {
-            return ResponseEntity.badRequest()
-                    .body("{\"message\": \"Category name cannot be empty.\"}");
+    public ResponseEntity<?> createCategory(@Valid @RequestBody Category category) {
+        if (category.getName() == null || category.getName().trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("{\"message\": \"Category name cannot be empty.\"}");
         }
-        Category savedCategory = categoryService.save(new Category(name));
+        Category savedCategory = categoryService.save(new Category(category.getName()));
         return ResponseEntity.ok(savedCategory);
     }
 
@@ -36,10 +33,11 @@ public class CategoryController {
         List<Category> categories = categoryService.findAll();
         return ResponseEntity.ok(categories);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getCategoryById(@PathVariable Long id) {
         return categoryService.findById(id)
-                .map(category -> ResponseEntity.ok(category))
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 }

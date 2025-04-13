@@ -10,59 +10,45 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private Double price;
     private LocalDate date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    @JsonBackReference  // Prevents infinite recursion during JSON serialization
+    @JsonBackReference
     private Category category;
+
+    // New field: linking product to the user who purchased it
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Product() {}
 
-    public Product(String name, Double price, LocalDate date, Category category) {
+    public Product(String name, Double price, LocalDate date, Category category, User user) {
         this.name = name;
         this.price = price;
         this.date = date;
         this.category = category;
+        this.user = user;
     }
 
-    // Getters & Setters
-    public Long getId() {
-        return id;
-    }
+    // Getters and setters
+    public Long getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Double getPrice() { return price; }
+    public void setPrice(Double price) { this.price = price; }
 
-    public Double getPrice() {
-        return price;
-    }
+    public LocalDate getDate() { return date; }
+    public void setDate(LocalDate date) { this.date = date; }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
 }

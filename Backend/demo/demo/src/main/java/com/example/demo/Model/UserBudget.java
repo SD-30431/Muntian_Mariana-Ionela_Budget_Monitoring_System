@@ -1,11 +1,8 @@
 package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-
 import javax.persistence.*;
 
-@Getter
 @Entity
 @Table(name = "user_budget")
 public class UserBudget {
@@ -14,13 +11,11 @@ public class UserBudget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Many-to-one relationship to user
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference(value = "user-userBudget") // Ensure the User class has matching @JsonManagedReference if needed.
-    private User user;
+    @JsonBackReference(value = "user-userBudget")
+    private com.example.demo.Model.User user;
 
-    // Many-to-one relationship to budget
     @ManyToOne
     @JoinColumn(name = "budget_id")
     @JsonBackReference(value = "budget-userBudget")
@@ -33,13 +28,10 @@ public class UserBudget {
         this.budget = budget;
     }
 
-    // Getters & Setters
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setBudget(Budget budget) {
-        this.budget = budget;
-    }
+    // Getters and setters
+    public Long getId() { return id; }
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    public Budget getBudget() { return budget; }
+    public void setBudget(Budget budget) { this.budget = budget; }
 }

@@ -1,8 +1,7 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.BusinessLogic.BudgetService;
 import com.example.demo.Model.Budget;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.BusinessLogic.BudgetService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,16 +9,36 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/budget")
 public class BudgetController {
 
-    @Autowired
-    private BudgetService budgetService;
+    private final BudgetService budgetService;
+
+    public BudgetController(BudgetService budgetService) {
+        this.budgetService = budgetService;
+    }
 
     @PostMapping("/create")
-    public Budget createBudget(@RequestBody Budget budget) {
-        return budgetService.save(budget);
+    public ResponseEntity<Budget> createBudget(@RequestBody Budget budget) {
+        Budget savedBudget = budgetService.save(budget);
+        return ResponseEntity.ok(savedBudget);
     }
 
     @GetMapping("/{cardnumber}")
-    public Budget getBudget(@PathVariable String cardnumber) {
-        return budgetService.findByCardNumber(cardnumber);
+    public ResponseEntity<Budget> getBudget(@PathVariable String cardnumber) {
+        Budget budget = budgetService.findByCardNumber(cardnumber);
+        if (budget == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(budget);
+    }
+    // Added update endpoint
+    @PutMapping("/{id}")
+    public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budget) {
+        Budget existingBudget = budgetService.findById(id);
+        if (existingBudget == null) {
+            return ResponseEntity.notFound().build();
+        }
+        // Update the budget amount based on the incoming value.
+        existingBudget.setAmount(budget.getAmount());
+        Budget updatedBudget = budgetService.save(existingBudget);
+        return ResponseEntity.ok(updatedBudget);
     }
 }

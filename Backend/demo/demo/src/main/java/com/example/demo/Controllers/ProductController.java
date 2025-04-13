@@ -1,58 +1,57 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.BusinessLogic.ProductService;
+import com.example.demo.DTO.CategoryExpenseRequest;
 import com.example.demo.Model.Product;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.BusinessLogic.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping("/create")
-    public Product createProduct(@RequestBody Product product) {
-        return productService.save(product);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product savedProduct = productService.save(product);
+        return ResponseEntity.ok(savedProduct);
     }
 
     @GetMapping("/all")
-    public List<Product> getAll() {
-        return productService.findAll();
+    public ResponseEntity<List<Product>> getAll() {
+        List<Product> products = productService.findAll();
+        return ResponseEntity.ok(products);
     }
 
     @PutMapping("/update/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.updateProduct(product);
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        Product updatedProduct = productService.updateProduct(product);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/grouped-by-category")
-    public List<Map<String, Object>> getExpensesGroupedByCategory() {
-        List<Product> products = productService.findAll();
-        Map<String, Double> totals = products.stream().collect(
-                Collectors.groupingBy(
-                        p -> (p.getCategory() != null && p.getCategory().getName() != null)
-                                ? p.getCategory().getName()
-                                : "Uncategorized",
-                        Collectors.summingDouble(Product::getPrice)
-                )
-        );
-        List<Map<String, Object>> result = new ArrayList<>();
-        for (Map.Entry<String, Double> entry : totals.entrySet()) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("_id", entry.getKey());
-            map.put("total", entry.getValue());
-            result.add(map);
-        }
-        return result;
+    public ResponseEntity<List<CategoryExpenseRequest>> getExpensesGroupedByCategory() {
+        List<CategoryExpenseRequest> results = productService.getExpensesGroupedByCategory();
+        return ResponseEntity.ok(results);
+    }
+
+    // New endpoint to retrieve products purchased by a specific user
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Product>> getProductsByUser(@PathVariable Long userId) {
+        List<Product> products = productService.getProductsByUser(userId);
+        return ResponseEntity.ok(products);
     }
 }

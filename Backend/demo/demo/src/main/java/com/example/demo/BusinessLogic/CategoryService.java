@@ -2,9 +2,8 @@ package com.example.demo.BusinessLogic;
 
 import com.example.demo.Model.Category;
 import com.example.demo.Repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,14 +11,15 @@ import java.util.Optional;
 @Transactional
 public class CategoryService {
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
-    @Transactional
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
     public Category save(Category category) {
-        // Save and force flush to ensure data is committed
         Category saved = categoryRepository.save(category);
-        categoryRepository.flush();
+        // Additional business logic can go here.
         return saved;
     }
 

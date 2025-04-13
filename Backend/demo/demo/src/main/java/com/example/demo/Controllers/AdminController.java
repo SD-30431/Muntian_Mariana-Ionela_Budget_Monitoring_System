@@ -1,12 +1,13 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.BusinessLogic.AdminService;
+import com.example.demo.DTO.AdminLoginRequest;
 import com.example.demo.Model.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.BusinessLogic.AdminService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,56 +15,40 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    private AdminService adminService;
+    private final AdminService adminService;
+
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     @PostMapping("/create")
-    public Admin createAdmin(@RequestBody Admin admin) {
-        return adminService.save(admin);
+    public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
+        Admin savedAdmin = adminService.save(admin);
+        return ResponseEntity.ok(savedAdmin);
     }
 
     @GetMapping("/{username}")
-    public Admin getAdmin(@PathVariable String username) {
-        return adminService.findByUsername(username);
+    public ResponseEntity<Admin> getAdmin(@PathVariable String username) {
+        Admin admin = adminService.findByUsername(username);
+        if (admin == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(admin);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginAdmin(@RequestBody LoginRequest loginRequest) {
-        String username = loginRequest.getUsername();
-        String password = loginRequest.getPassword();
-
-        // Check for static credentials: admin/admin
-        if ("admin".equals(username) && "admin".equals(password)) {
+    public ResponseEntity<?> loginAdmin(@Valid @RequestBody AdminLoginRequest loginRequest) {
+        if (adminService.validateAdminLogin(loginRequest.getUsername(), loginRequest.getPassword())) {
             Admin admin = new Admin("admin", "admin");
-
-            Map<String, Object> responseMap = new HashMap<>();
-            responseMap.put("success", true);
-            responseMap.put("admin", admin);
-            return ResponseEntity.ok(responseMap);
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("admin", admin);
+            return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("{\"message\": \"Invalid credentials.\"}");
-        }
-    }
-
-
-    public static class LoginRequest {
-        private String username;
-        private String password;
-
-        public LoginRequest() {}
-
-        public String getUsername() {
-            return username;
-        }
-        public void setUsername(String username) {
-            this.username = username;
-        }
-        public String getPassword() {
-            return password;
-        }
-        public void setPassword(String password) {
-            this.password = password;
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "Invalid credentials");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
 }

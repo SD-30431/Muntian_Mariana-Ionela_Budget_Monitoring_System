@@ -1,35 +1,36 @@
 package com.example.demo.Controllers;
 
+import com.example.demo.Model.Budget;
+import com.example.demo.Model.User;
+import com.example.demo.Model.UserBudget;
+import com.example.demo.BusinessLogic.BudgetService;
 import com.example.demo.BusinessLogic.UserBudgetService;
 import com.example.demo.BusinessLogic.UserService;
-import com.example.demo.BusinessLogic.BudgetService;
-import com.example.demo.Model.UserBudget;
-import com.example.demo.Model.User;
-import com.example.demo.Model.Budget;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/userbudget")
 public class UserBudgetController {
 
-    @Autowired
-    private UserBudgetService userBudgetService;
+    private final UserBudgetService userBudgetService;
+    private final UserService userService;
+    private final BudgetService budgetService;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private BudgetService budgetService;
+    public UserBudgetController(UserBudgetService userBudgetService, UserService userService, BudgetService budgetService) {
+        this.userBudgetService = userBudgetService;
+        this.userService = userService;
+        this.budgetService = budgetService;
+    }
 
     @PostMapping("/link")
-    public UserBudget linkUserBudget(@RequestParam String username, @RequestParam String cardnumber) {
+    public ResponseEntity<?> linkUserBudget(@RequestParam String username, @RequestParam String cardnumber) {
         User user = userService.findByUsername(username);
         Budget budget = budgetService.findByCardNumber(cardnumber);
-
         if (user != null && budget != null) {
-            return userBudgetService.linkUserToBudget(user, budget);
+            UserBudget linkedBudget = userBudgetService.linkUserToBudget(user, budget);
+            return ResponseEntity.ok(linkedBudget);
         }
-        return null;
+        return ResponseEntity.badRequest().body("{\"message\": \"User or budget not found.\"}");
     }
 }
