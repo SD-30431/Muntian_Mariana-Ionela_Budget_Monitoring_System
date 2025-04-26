@@ -86,4 +86,12 @@ public class UserController {
         List<Budget> budgets = userService.getBudgetsByUsername(username);
         return ResponseEntity.ok(budgets);
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        // Remove password hashes before sending to frontend
+        users.forEach(user -> user.setPasswordHash(null));
+        return ResponseEntity.ok(users);
+    }
+
 }

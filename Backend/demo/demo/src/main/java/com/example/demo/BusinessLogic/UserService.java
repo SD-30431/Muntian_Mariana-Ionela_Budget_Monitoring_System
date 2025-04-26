@@ -37,4 +37,8 @@ public class UserService {
                 .map(UserBudget::getBudget)
                 .collect(Collectors.toList());
     }
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
 }
