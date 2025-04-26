@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/messages")
-@CrossOrigin(origins = "http://localhost:4200") // Allow Angular
+@CrossOrigin(origins = "http://localhost:4200")
 public class ChatMessageController {
 
     private final ChatMessageService chatMessageService;
@@ -25,5 +25,14 @@ public class ChatMessageController {
     @GetMapping("/{recipient}")
     public List<ChatMessage> getMessagesForRecipient(@PathVariable String recipient) {
         return chatMessageService.getMessagesForRecipient(recipient);
+    }
+
+    // ✅ NEW: Get full chat history between two users
+    @GetMapping("/chat/history")
+    public List<ChatMessage> getChatHistory(
+            @RequestParam String sender,
+            @RequestParam String recipient
+    ) {
+        return chatMessageService.getChatHistoryBetweenUsers(sender, recipient);
     }
 }
