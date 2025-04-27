@@ -1,8 +1,8 @@
 package com.example.demo.Model;
 
-import com.example.demo.Model.UserBudget;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,11 +25,13 @@ public class User {
 
     private Double salary;
 
+    @Column(name = "profile_picture") // ✅ NEW FIELD
+    private String profilePicture;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference(value = "user-userBudget")
     private Set<UserBudget> userBudgets = new HashSet<>();
 
-    // New field: list of products purchased by the user
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> purchasedProducts = new ArrayList<>();
 
@@ -58,4 +60,7 @@ public class User {
 
     public List<Product> getPurchasedProducts() { return purchasedProducts; }
     public void setPurchasedProducts(List<Product> purchasedProducts) { this.purchasedProducts = purchasedProducts; }
+
+    public String getProfilePicture() { return profilePicture; } // ✅ Getter
+    public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; } // ✅ Setter
 }

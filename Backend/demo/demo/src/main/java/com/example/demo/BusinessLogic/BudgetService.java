@@ -8,9 +8,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class BudgetService {
-
     private final BudgetRepository budgetRepository;
-
     public BudgetService(BudgetRepository budgetRepository) {
         this.budgetRepository = budgetRepository;
     }
@@ -25,5 +23,4 @@ public class BudgetService {
     public Budget findById(Long id) {
         return budgetRepository.findById(id).orElse(null);
     }
-
 }

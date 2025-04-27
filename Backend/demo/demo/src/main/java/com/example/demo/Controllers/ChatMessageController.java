@@ -27,7 +27,6 @@ public class ChatMessageController {
         return chatMessageService.getMessagesForRecipient(recipient);
     }
 
-    // ✅ NEW: Get full chat history between two users
     @GetMapping("/chat/history")
     public List<ChatMessage> getChatHistory(
             @RequestParam String sender,
