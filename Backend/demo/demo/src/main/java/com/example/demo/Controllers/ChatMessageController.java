@@ -2,6 +2,8 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Model.ChatMessage;
 import com.example.demo.BusinessLogic.ChatMessageService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,24 @@ public class ChatMessageController {
     }
 
     @PostMapping
-    public ChatMessage saveMessage(@RequestBody ChatMessage message) {
-        return chatMessageService.saveMessage(message);
+    public ResponseEntity<?> saveMessage(@RequestBody ChatMessage message) {
+        // Log the incoming message
+        System.out.println("💬 Received Message:");
+        System.out.println("Sender: " + message.getSender());
+        System.out.println("Recipient: " + message.getRecipient());
+        System.out.println("Content: " + message.getContent());
+
+        // Basic validation
+        if (message.getSender() == null || message.getSender().isBlank()
+                || message.getRecipient() == null || message.getRecipient().isBlank()
+                || message.getContent() == null || message.getContent().isBlank()) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("Sender, recipient, and content must not be empty.");
+        }
+
+        ChatMessage savedMessage = chatMessageService.saveMessage(message);
+        return ResponseEntity.ok(savedMessage);
     }
 
     @GetMapping("/{recipient}")

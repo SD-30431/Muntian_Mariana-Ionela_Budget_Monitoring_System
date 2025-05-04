@@ -1,19 +1,19 @@
 package com.example.demo.DTO;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class TransferRequest {
 
-    @NotBlank(message = "From card number is required")
+    @NotBlank(message = "Sender card number is required")
+    @Size(min = 4, max = 20, message = "Sender card number must be between 4 and 20 characters")
     private String fromCard;
 
-    @NotBlank(message = "To card number is required")
+    @NotBlank(message = "Recipient card number is required")
+    @Size(min = 4, max = 20, message = "Recipient card number must be between 4 and 20 characters")
     private String toCard;
 
     @NotNull(message = "Amount is required")
-    @Min(value = 1, message = "Amount must be greater than 0")
+    @DecimalMin(value = "0.01", inclusive = true, message = "Amount must be greater than 0")
     private Double amount;
 
     // Getters and setters

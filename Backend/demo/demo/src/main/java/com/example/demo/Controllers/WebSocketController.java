@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WebSocketController {
-
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
     public Message broadcastMessage(Message message) {

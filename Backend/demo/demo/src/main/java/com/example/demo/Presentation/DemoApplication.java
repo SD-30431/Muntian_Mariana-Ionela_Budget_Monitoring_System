@@ -13,7 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("com.example.demo.Model")
 @EnableJpaRepositories("com.example.demo.Repository")
 public class DemoApplication {
-
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 		//JavaFXApplication.setContext(context);

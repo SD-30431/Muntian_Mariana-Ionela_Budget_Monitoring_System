@@ -1,8 +1,9 @@
 package com.example.demo.Model;
 
-import com.example.demo.Model.UserBudget;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,8 +15,12 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Amount is required")
+    @PositiveOrZero(message = "Amount must be zero or positive")
     private Double amount;
 
+    @NotBlank(message = "Card number is required")
+    @Size(min = 4, max = 20, message = "Card number must be between 4 and 20 characters")
     @Column(unique = true)
     private String cardnumber;
 
@@ -32,10 +37,13 @@ public class Budget {
 
     // Getters and setters
     public Long getId() { return id; }
+
     public Double getAmount() { return amount; }
     public void setAmount(Double amount) { this.amount = amount; }
+
     public String getCardnumber() { return cardnumber; }
     public void setCardnumber(String cardnumber) { this.cardnumber = cardnumber; }
+
     public Set<UserBudget> getUserBudgets() { return userBudgets; }
     public void setUserBudgets(Set<UserBudget> userBudgets) { this.userBudgets = userBudgets; }
 }

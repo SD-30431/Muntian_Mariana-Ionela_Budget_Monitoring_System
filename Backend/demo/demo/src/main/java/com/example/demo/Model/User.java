@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.ArrayList;
+import javax.validation.constraints.*;
+import java.util.*;
 
 @Entity
 @Table(name = "user_table")
@@ -17,15 +15,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
     @Column(unique = true)
     private String username;
 
+    @NotBlank(message = "Password is required")
+    @Size(min = 2, message = "Password must be at least 2 characters long")
     @JsonIgnore
     private String passwordHash;
 
+    @NotNull(message = "Salary is required")
+    @Min(value = 0, message = "Salary must be non-negative")
     private Double salary;
 
-    @Column(name = "profile_picture") // ✅ NEW FIELD
+    @Column(name = "profile_picture")
     private String profilePicture;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -61,6 +65,6 @@ public class User {
     public List<Product> getPurchasedProducts() { return purchasedProducts; }
     public void setPurchasedProducts(List<Product> purchasedProducts) { this.purchasedProducts = purchasedProducts; }
 
-    public String getProfilePicture() { return profilePicture; } // ✅ Getter
-    public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; } // ✅ Setter
+    public String getProfilePicture() { return profilePicture; }
+    public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; }
 }
