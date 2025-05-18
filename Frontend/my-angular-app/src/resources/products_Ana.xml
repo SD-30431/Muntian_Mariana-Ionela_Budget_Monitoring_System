@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products>
+    <product>
+        <categoryName>Trips</categoryName>
+        <date/>
+        <name>France Trip</name>
+        <price>500.0</price>
+    </product>
+    <product>
+        <categoryName>Bills</categoryName>
+        <date/>
+        <name>Gas</name>
+        <price>100.0</price>
+    </product>
+    <product>
+        <categoryName>Shoes</categoryName>
+        <date/>
+        <name>High Heels</name>
+        <price>50.0</price>
+    </product>
+    <product>
+        <categoryName>Sweets</categoryName>
+        <date/>
+        <name>KinderBueno</name>
+        <price>5.0</price>
+    </product>
+    <product>
+        <categoryName>Sport Facilities</categoryName>
+        <date/>
+        <name>Pilates Class</name>
+        <price>150.0</price>
+    </product>
+    <product>
+        <categoryName>Food</categoryName>
+        <date/>
+        <name>Peanut Butter</name>
+        <price>10.0</price>
+    </product>
+    <product>
+        <categoryName>Health</categoryName>
+        <date/>
+        <name>Heart Control</name>
+        <price>300.0</price>
+    </product>
+    <product>
+        <categoryName>Trips</categoryName>
+        <date/>
+        <name>Porto</name>
+        <price>300.0</price>
+    </product>
+    <product>
+        <categoryName>Food</categoryName>
+        <date/>
+        <name>Alune</name>
+        <price>4.0</price>
+    </product>
+</products>

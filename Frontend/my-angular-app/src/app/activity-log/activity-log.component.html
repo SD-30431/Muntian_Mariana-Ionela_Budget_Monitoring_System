@@ -1,0 +1,39 @@
+<div class="main-admin-container">
+    <div class="overlay">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <button class="go-back" (click)="navigateTo('main-admin')">&larr; Go Back</button>
+        <h1>Budget Monitor</h1>
+      </div>
+  
+      <!-- Main Layout -->
+      <div class="main-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <button class="btn primary" (click)="navigateTo('main-admin')">Home</button>
+          <button class="btn secondary" (click)="navigateTo('categories')">Manage Categories</button>
+          <button class="btn primary" (click)="navigateTo('activity-log')">Logged Users</button> <!-- Fixed button color -->
+        </div>
+  
+        <!-- Content Area -->
+        <div class="content-area">
+          <div class="activity-log-section">
+            <h2>Logged Users Activity</h2>
+  
+            <div *ngIf="activityLogs.length > 0; else noActivity">
+              <ul>
+                <li *ngFor="let log of activityLogs">
+                    <strong>{{ log.username }}</strong> {{ log.action }} at <em>{{ log.timestamp | date:'medium' }}</em>
+                </li>
+              </ul>
+            </div>
+  
+            <ng-template #noActivity>
+              <p>No activity found yet.</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

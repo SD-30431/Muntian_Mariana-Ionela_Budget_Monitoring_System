@@ -1,0 +1,36 @@
+import { Routes } from '@angular/router';
+import { StartComponent } from './start/start.component';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { MainUserComponent } from './main-user/main-user.component';
+import { MainAdminComponent } from './main-admin/main-admin.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ManageExpensesComponent } from './manage-expenses/manage-expenses.component';
+import { ChartExpensesComponent } from './chart-expenses/chart-expenses.component';
+import { HistoryComponent } from './history/history.component';
+import { ManageCardsComponent } from './manage-cards/manage-cards.component';
+import { ChatComponent } from './chat/chat.component';
+import { SendMoneyComponent } from './send-money/send-money.component'; 
+import { ActivityLogComponent } from './activity-log/activity-log.component';
+import { SpendingTrendsComponent } from './spending-trends/spending-trends.component'; 
+
+export const routes: Routes = [
+  { path: '', component: StartComponent },
+  { path: 'start', component: StartComponent },
+  { path: 'login-user', component: LoginUserComponent },
+  { path: 'login-admin', component: LoginAdminComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'main-user', component: MainUserComponent },
+  { path: 'main-admin', component: MainAdminComponent },
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'manage-expenses', component: ManageExpensesComponent },
+  { path: 'chart-expenses', component: ChartExpensesComponent },
+  { path: 'history', component: HistoryComponent },
+  { path: 'manage-cards', component: ManageCardsComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'send-money', component: SendMoneyComponent }, 
+  { path: 'activity-log', component: ActivityLogComponent },
+  { path: 'spending-trends', component: SpendingTrendsComponent }, 
+  { path: '**', redirectTo: '' }
+];

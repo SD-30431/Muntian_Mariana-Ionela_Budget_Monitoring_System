@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\api",
+    "\\src\\app",
+    "\\src\\app\\categories",
+    "\\src\\app\\chart-expenses"
+  ],
+  "SelectedNode": "\\src\\app\\chart-expenses\\chart-expenses.component.spec.ts",
+  "PreviewInSolutionExplorer": false
+}

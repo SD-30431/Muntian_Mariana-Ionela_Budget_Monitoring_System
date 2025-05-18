@@ -1,0 +1,50 @@
+<div class="main-admin-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('main-admin')">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main-admin')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('categories')">Manage Categories</button>
+        <button class="btn primary" (click)="navigateTo('activity-log')">Logged Users</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <h2>Manage Categories</h2>
+
+        <div class="category-buttons">
+          <button class="btn primary" (click)="showCategoryForm()">Add Category</button>
+          <button class="btn secondary" (click)="loadCategories()">See Categories</button>
+        </div>
+
+        <!-- Add Category Form -->
+        <div class="category-form" *ngIf="showForm">
+          <form #categoryForm="ngForm" (ngSubmit)="saveCategory()">
+            <label for="categoryName">Name:</label>
+            <input id="categoryName" type="text" name="categoryName" [(ngModel)]="categoryName" required #nameInput="ngModel" />
+            <button class="btn primary" type="submit" [disabled]="categoryForm.invalid">Save</button>
+            <div *ngIf="nameInput.invalid && nameInput.touched" class="error">Category name is required.</div>
+          </form>
+          <p class="form-msg">{{ formMessage }}</p>
+        </div>
+
+        <!-- Scrollable List -->
+        <div class="scroll-box">
+          <p *ngIf="categories.length === 0">No categories found.</p>
+          <ul>
+            <li *ngFor="let category of categories">
+              ID: {{ category.id }} | Name: {{ category.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

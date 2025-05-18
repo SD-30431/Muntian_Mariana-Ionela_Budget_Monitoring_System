@@ -1,0 +1,96 @@
+<div class="main-user-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('dashboard')">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">Expenses History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="scrollable-content">
+          <h2>Manage Expenses</h2>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="btn primary" (click)="setAction('add')">Add New Product</button>
+            <button class="btn accent" (click)="setAction('edit')">Edit Product</button>
+            <button class="btn warn" (click)="setAction('delete')">Delete Product</button>
+          </div>
+
+          <!-- Expense Form -->
+          <form [formGroup]="expenseForm" *ngIf="currentAction !== 'none'" (ngSubmit)="onSubmit()" novalidate>
+            <!-- ID field for edit/delete -->
+            <div *ngIf="currentAction !== 'add'">
+              <label>Product ID</label>
+              <input type="text" formControlName="id" [class.invalid]="isInvalid('id')">
+              <div class="error" *ngIf="isInvalid('id')">Product ID is required.</div>
+            </div>
+
+            <!-- Fields for add/edit only -->
+            <ng-container *ngIf="currentAction === 'add' || currentAction === 'edit'">
+              <div>
+                <label>Product Name</label>
+                <input type="text" formControlName="name" [class.invalid]="isInvalid('name')">
+                <div class="error" *ngIf="isInvalid('name')">Product name is required.</div>
+              </div>
+
+              <div>
+                <label>Product Price</label>
+                <input type="number" formControlName="price" [class.invalid]="isInvalid('price')">
+                <div class="error" *ngIf="isInvalid('price')">Valid price is required.</div>
+              </div>
+
+              <div>
+                <label>Card Number</label>
+                <select formControlName="cardNo" [class.invalid]="isInvalid('cardNo')">
+                  <option *ngFor="let card of cardNumbers" [value]="card">
+                    {{ card }}
+                  </option>
+                </select>
+                <div class="error" *ngIf="isInvalid('cardNo')">Card number is required.</div>
+              </div>
+
+              <div>
+                <label>Date</label>
+                <input type="date" formControlName="date" [class.invalid]="isInvalid('date')">
+                <div class="error" *ngIf="isInvalid('date')">Date is required.</div>
+              </div>
+
+              <div>
+                <label>Category</label>
+                <select formControlName="category" [class.invalid]="isInvalid('category')">
+                  <option *ngFor="let cat of categories" [ngValue]="cat">
+                    {{ cat.name }}
+                  </option>
+                </select>
+                <div class="error" *ngIf="isInvalid('category')">Category is required.</div>
+              </div>
+            </ng-container>
+
+            <!-- General form error -->
+            <div class="error" *ngIf="formErrorMessage">{{ formErrorMessage }}</div>
+
+            <button class="btn primary" type="submit">
+              {{ getActionButtonText() }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

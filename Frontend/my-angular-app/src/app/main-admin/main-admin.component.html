@@ -1,0 +1,30 @@
+<div class="main-admin-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="onGoBack()">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="onHome()">Home</button>
+        <button class="btn secondary" (click)="onManageCategories()">Manage Categories</button>
+        <button class="btn primary" (click)="onActivityLog()">Logged Users</button> <!-- Updated -->
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="admin-profile-section">
+          <h2>Admin Dashboard</h2>
+
+          <div class="admin-info">
+            <p><strong>Username:</strong> {{ username }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

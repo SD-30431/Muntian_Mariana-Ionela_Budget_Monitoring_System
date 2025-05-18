@@ -1,0 +1,85 @@
+<div class="chat-main-container">
+  <div class="chat-overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('dashboard')">&larr; Go Back</button>
+      <h1>Messenger</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar Menu (matches Main Page) -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+      </div>
+
+      <!-- Chat Content Area -->
+      <div class="content-area">
+        <div class="chat-layout">
+          <!-- Left: Search and User List -->
+          <div class="chat-sidebar">
+            <input 
+              type="text" 
+              [(ngModel)]="searchTerm" 
+              placeholder="Search users..." 
+              class="search-input"
+              required
+            />
+
+            <div class="user-list">
+              <div 
+                *ngFor="let user of filteredUsers()" 
+                (click)="selectUser(user)" 
+                [class.active]="user === selectedUser"
+                class="user-item"
+              >
+                {{ user }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Chat Messages -->
+          <div class="chat-content">
+            <div *ngIf="!selectedUser" class="no-user-selected">
+              <p>Please select a user to start chatting.</p>
+            </div>
+
+            <div *ngIf="selectedUser">
+              <h2>Chatting with {{ selectedUser }}</h2>
+
+              <div class="messages">
+                <div *ngIf="messages.length === 0" class="no-messages">
+                  No messages yet. Start the conversation!
+                </div>
+
+                <div *ngFor="let msg of messages" class="message-item">
+                  <strong>{{ msg.sender }}:</strong> {{ msg.content }}
+                </div>
+              </div>
+
+              <div class="chat-input">
+                <input 
+                  type="text" 
+                  [(ngModel)]="message" 
+                  (keyup.enter)="send()" 
+                  placeholder="Type a message..." 
+                  [class.invalid]="!message.trim() && message.length > 0"
+                  required
+                />
+                <button (click)="send()" [disabled]="!message.trim()">Send</button>
+                <p *ngIf="!message.trim() && message.length > 0" class="validation-warning">Message cannot be empty.</p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- chat-layout -->
+      </div> <!-- content-area -->
+    </div> <!-- main-layout -->
+  </div> <!-- chat-overlay -->
+</div> <!-- chat-main-container -->

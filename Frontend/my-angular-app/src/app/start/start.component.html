@@ -1,0 +1,33 @@
+<div class="start-container">
+  <!-- Content Overlay -->
+  <div class="overlay">
+    <header class="header">
+      <h1>Budget Monitor</h1>
+      <p>Optimize your financial strategy</p>
+    </header>
+    <div class="button-group">
+      <button class="btn primary" (click)="loginUser()">User Login</button>
+      <button class="btn secondary" (click)="loginAdmin()">Admin Login</button>
+      <button class="btn accent" (click)="createNewAccount()">Sign Up</button>
+    </div>
+  </div>
+  
+  <!-- Animated Wave Lines -->
+  <div class="waves">
+    <!-- Wave that travels above the overlay -->
+    <svg class="wave wave-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+      <path fill="none" stroke="#008080" stroke-width="3"
+        d="M0,60 C360,10 1080,110 1440,60" />
+    </svg>
+    <!-- Wave that travels below the overlay -->
+    <svg class="wave wave-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+      <path fill="none" stroke="#D8BFD8" stroke-width="3"
+        d="M0,90 C360,140 1080,40 1440,90" />
+    </svg>
+    <!-- Additional wave for extra effect -->
+    <svg class="wave wave-middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+      <path fill="none" stroke="#FFF5EE" stroke-width="2"
+        d="M0,75 C360,25 1080,125 1440,75" />
+    </svg>
+  </div>
+</div>

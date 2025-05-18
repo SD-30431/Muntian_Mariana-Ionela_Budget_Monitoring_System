@@ -1,0 +1,47 @@
+<div class="main-user-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('main')">&larr; Back to Main</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="profile-and-cards">
+          <!-- Left: Chart Section -->
+          <div class="profile-section">
+            <h2>Monthly Spending Trends</h2>
+            <canvas baseChart
+                    [data]="chartData"
+                    [type]="'line'"
+                    [options]="chartOptions">
+            </canvas>
+          </div>
+
+          <!-- Right: Insight Text -->
+          <div class="wallet-section">
+            <h2>Insight</h2>
+            <p style="font-size: 1rem; color: #333;">
+              This chart displays your expenses month by month. Track how your spending evolves to better plan your financial goals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

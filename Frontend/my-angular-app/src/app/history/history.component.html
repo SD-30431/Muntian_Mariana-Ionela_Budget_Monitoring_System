@@ -1,0 +1,66 @@
+<div class="main-user-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('dashboard')">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <nav class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+
+      </nav>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="scrollable-content">
+          <h2>History of Expenses</h2>
+
+          <!-- Filter Section -->
+          <div class="filter-section">
+            <div class="filter-group">
+              <label for="category">Filter by Category:</label>
+              <select id="category" [(ngModel)]="selectedCategory" (change)="applyFilters()">
+                <option value="All">All</option>
+                <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="date">Filter by Date:</label>
+              <input id="date" type="date" [(ngModel)]="selectedDate" (change)="applyFilters()" />
+            </div>
+
+            <div class="button-group">
+              <button class="btn primary" (click)="applyFilters()">Search</button>
+              <button class="btn secondary" (click)="exportAsXml()">Export History as XML</button>
+            </div>
+          </div>
+
+          <!-- Products List -->
+          <div class="scroll-list">
+            <p *ngIf="filteredProducts.length === 0">No expenses found.</p>
+            <ul>
+              <li *ngFor="let product of filteredProducts">
+                <strong>ID:</strong> {{ product.id }} |
+                <strong>Name:</strong> {{ product.name }} |
+                <strong>Price:</strong> {{ product.price | number:'1.2-2' }} |
+                <strong>Date:</strong> {{ product.date }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

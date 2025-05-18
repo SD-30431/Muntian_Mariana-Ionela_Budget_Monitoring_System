@@ -1,0 +1,56 @@
+<div class="main-user-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('dashboard')">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">Expenses History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="scrollable-content">
+          <h2>Manage Cards</h2>
+          <button class="btn primary" (click)="showForm = true">Add New Card</button>
+
+          <div class="form-card" *ngIf="showForm">
+            <label>Card Number:</label>
+            <input type="text" [(ngModel)]="cardNo" #cardNoInput="ngModel" name="cardNo" required minlength="1" maxlength="20" placeholder="Card Number" />
+            <div class="error" *ngIf="cardNoInput.invalid && cardNoInput.touched">
+              Card number is required and must be between 1 and 20 characters.
+            </div>
+
+            <label>Amount:</label>
+            <input
+              type="number"
+              [(ngModel)]="amount"
+              #amountInput="ngModel"
+              name="amount"
+              required
+              min="0"
+              placeholder="Amount"
+            />
+            <div class="error" *ngIf="amountInput.invalid && amountInput.touched">
+              Please enter a non-negative amount.
+            </div>
+
+            <button class="btn primary" (click)="saveCard()" [disabled]="cardNoInput.invalid || amountInput.invalid">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

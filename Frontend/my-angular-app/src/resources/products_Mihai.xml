@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<products>
+    <product>
+        <categoryName>Trips</categoryName>
+        <date/>
+        <name>Italy Trip </name>
+        <price>500.0</price>
+    </product>
+    <product>
+        <categoryName>Shoes</categoryName>
+        <date/>
+        <name>Boots</name>
+        <price>500.0</price>
+    </product>
+    <product>
+        <categoryName>Bills</categoryName>
+        <date/>
+        <name>Water</name>
+        <price>50.0</price>
+    </product>
+    <product>
+        <categoryName>Bills</categoryName>
+        <date/>
+        <name>Electricity Bill</name>
+        <price>100.0</price>
+    </product>
+</products>

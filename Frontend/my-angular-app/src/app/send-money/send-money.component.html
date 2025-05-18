@@ -1,0 +1,57 @@
+<div class="main-user-container">
+  <div class="overlay">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="go-back" (click)="navigateTo('dashboard')">&larr; Go Back</button>
+      <h1>Budget Monitor</h1>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="btn primary" (click)="navigateTo('main')">Home</button>
+        <button class="btn secondary" (click)="navigateTo('manage-expenses')">Manage Expenses</button>
+        <button class="btn primary" (click)="navigateTo('manage-cards')">Manage Cards</button>
+        <button class="btn secondary" (click)="navigateTo('history')">Expenses History</button>
+        <button class="btn primary" (click)="navigateTo('chart')">Chart Expenses</button>
+        <button class="btn secondary" (click)="navigateTo('chat')">Chat</button>
+        <button class="btn primary" (click)="navigateTo('send-money')">Transfer Money</button>
+        <button class="btn secondary" (click)="navigateTo('spending-trends')">Spending Trends</button>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div class="scrollable-content">
+          <h2>Transfer Money</h2>
+
+          <!-- From Card -->
+          <div class="form-group">
+            <label for="fromCard">Select Your Card:</label>
+            <select id="fromCard" [(ngModel)]="selectedFromCard">
+              <option *ngFor="let card of userCards" [value]="card.cardnumber">
+                {{ card.cardnumber }}
+              </option>
+            </select>
+          </div>
+
+          <!-- To Card -->
+          <div class="form-group">
+            <label for="toCard">Recipient's Card Number:</label>
+            <input id="toCard" type="text" [(ngModel)]="recipientCardNumber" placeholder="Enter recipient's card number" />
+          </div>
+
+          <!-- Amount -->
+          <div class="form-group">
+            <label for="amount">Amount to Send:</label>
+            <input id="amount" type="number" [(ngModel)]="amountToSend" placeholder="Enter amount" />
+          </div>
+
+          <button class="btn primary" (click)="sendMoney()">Send Money</button>
+
+          <p *ngIf="message" class="transfer-message">{{ message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
