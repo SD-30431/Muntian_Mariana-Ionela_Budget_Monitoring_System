@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@XmlRootElement(name = "category")
 public class Category {
 
     @Id
@@ -21,6 +24,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @XmlTransient
     private List<Product> products = new ArrayList<>();
 
     public Category() {}

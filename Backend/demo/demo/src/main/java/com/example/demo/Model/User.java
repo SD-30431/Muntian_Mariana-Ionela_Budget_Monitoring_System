@@ -34,9 +34,12 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference(value = "user-userBudget")
+    @JsonIgnore
     private Set<UserBudget> userBudgets = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "user-product")
+    @JsonIgnore
     private List<Product> purchasedProducts = new ArrayList<>();
 
     public User() {}
@@ -47,7 +50,6 @@ public class User {
         this.salary = salary;
     }
 
-    // Getters and setters
     public Long getId() { return id; }
 
     public String getUsername() { return username; }

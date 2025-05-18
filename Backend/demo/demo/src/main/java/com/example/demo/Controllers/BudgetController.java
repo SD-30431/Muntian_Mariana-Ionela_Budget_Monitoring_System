@@ -17,28 +17,18 @@ public class BudgetController {
 
     @PostMapping("/create")
     public ResponseEntity<Budget> createBudget(@RequestBody Budget budget) {
-        Budget savedBudget = budgetService.save(budget);
-        return ResponseEntity.ok(savedBudget);
+        return ResponseEntity.ok(budgetService.save(budget));
     }
 
     @GetMapping("/{cardnumber}")
     public ResponseEntity<Budget> getBudget(@PathVariable String cardnumber) {
         Budget budget = budgetService.findByCardNumber(cardnumber);
-        if (budget == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(budget);
+        return budget != null ? ResponseEntity.ok(budget) : ResponseEntity.notFound().build();
     }
-    // Added update endpoint
+
     @PutMapping("/{id}")
-    public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budget) {
-        Budget existingBudget = budgetService.findById(id);
-        if (existingBudget == null) {
-            return ResponseEntity.notFound().build();
-        }
-        // Update the budget amount based on the incoming value.
-        existingBudget.setAmount(budget.getAmount());
-        Budget updatedBudget = budgetService.save(existingBudget);
-        return ResponseEntity.ok(updatedBudget);
+    public ResponseEntity<Budget> updateBudget(@PathVariable Long id, @RequestBody Budget budgetDetails) {
+        Budget updated = budgetService.updateAmount(id, budgetDetails.getAmount());
+        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 }

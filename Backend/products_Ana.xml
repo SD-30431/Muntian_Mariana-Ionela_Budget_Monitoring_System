@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='products.xsl'?>
+<products>
+    <product>
+        <categoryName>Food</categoryName>
+        <date/>
+        <name>Alune</name>
+        <price>5.0</price>
+    </product>
+    <product>
+        <categoryName>Trips</categoryName>
+        <date/>
+        <name>France Trip</name>
+        <price>500.0</price>
+    </product>
+    <product>
+        <categoryName>Bills</categoryName>
+        <date/>
+        <name>Gas</name>
+        <price>100.0</price>
+    </product>
+    <product>
+        <categoryName>Shoes</categoryName>
+        <date/>
+        <name>High Heels</name>
+        <price>50.0</price>
+    </product>
+</products>

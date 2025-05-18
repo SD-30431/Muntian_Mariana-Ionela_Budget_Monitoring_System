@@ -21,35 +21,24 @@ public class ChatMessageController {
 
     @PostMapping
     public ResponseEntity<?> saveMessage(@RequestBody ChatMessage message) {
-        // Log the incoming message
-        System.out.println("💬 Received Message:");
-        System.out.println("Sender: " + message.getSender());
-        System.out.println("Recipient: " + message.getRecipient());
-        System.out.println("Content: " + message.getContent());
-
-        // Basic validation
-        if (message.getSender() == null || message.getSender().isBlank()
-                || message.getRecipient() == null || message.getRecipient().isBlank()
-                || message.getContent() == null || message.getContent().isBlank()) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body("Sender, recipient, and content must not be empty.");
+        try {
+            ChatMessage savedMessage = chatMessageService.saveValidatedMessage(message);
+            return ResponseEntity.ok(savedMessage);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
-
-        ChatMessage savedMessage = chatMessageService.saveMessage(message);
-        return ResponseEntity.ok(savedMessage);
     }
 
     @GetMapping("/{recipient}")
-    public List<ChatMessage> getMessagesForRecipient(@PathVariable String recipient) {
-        return chatMessageService.getMessagesForRecipient(recipient);
+    public ResponseEntity<List<ChatMessage>> getMessagesForRecipient(@PathVariable String recipient) {
+        return ResponseEntity.ok(chatMessageService.getMessagesForRecipient(recipient));
     }
 
     @GetMapping("/chat/history")
-    public List<ChatMessage> getChatHistory(
+    public ResponseEntity<List<ChatMessage>> getChatHistory(
             @RequestParam String sender,
             @RequestParam String recipient
     ) {
-        return chatMessageService.getChatHistoryBetweenUsers(sender, recipient);
+        return ResponseEntity.ok(chatMessageService.getChatHistoryBetweenUsers(sender, recipient));
     }
 }

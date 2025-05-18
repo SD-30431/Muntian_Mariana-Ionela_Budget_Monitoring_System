@@ -20,7 +20,7 @@ public class Budget {
     private Double amount;
 
     @NotBlank(message = "Card number is required")
-    @Size(min = 4, max = 20, message = "Card number must be between 4 and 20 characters")
+    @Size(min = 1, max = 20, message = "Card number must be between 1 and 20 characters")
     @Column(unique = true)
     private String cardnumber;
 

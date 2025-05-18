@@ -16,7 +16,7 @@ public class ChatMessageService {
         this.chatMessageRepository = chatMessageRepository;
     }
 
-    public ChatMessage saveMessage(ChatMessage message) {
+    public ChatMessage saveValidatedMessage(ChatMessage message) {
         if (!StringUtils.hasText(message.getSender())) {
             throw new IllegalArgumentException("Sender must not be blank");
         }

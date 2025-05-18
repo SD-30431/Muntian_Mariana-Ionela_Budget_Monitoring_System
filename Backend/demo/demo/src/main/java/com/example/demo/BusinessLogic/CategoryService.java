@@ -3,6 +3,7 @@ package com.example.demo.BusinessLogic;
 import com.example.demo.Model.Category;
 import com.example.demo.Repository.CategoryRepository;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +19,10 @@ public class CategoryService {
     }
 
     public Category save(Category category) {
-        Category saved = categoryRepository.save(category);
-        // Additional business logic can go here.
-        return saved;
+        if (category.getName() == null || category.getName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Category name cannot be empty.");
+        }
+        return categoryRepository.save(category);
     }
 
     public List<Category> findAll() {

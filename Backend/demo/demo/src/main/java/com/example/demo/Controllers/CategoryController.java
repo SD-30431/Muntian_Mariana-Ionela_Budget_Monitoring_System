@@ -21,17 +21,17 @@ public class CategoryController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createCategory(@Valid @RequestBody Category category) {
-        if (category.getName() == null || category.getName().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("{\"message\": \"Category name cannot be empty.\"}");
+        try {
+            Category savedCategory = categoryService.save(category);
+            return ResponseEntity.ok(savedCategory);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body("{\"message\": \"" + ex.getMessage() + "\"}");
         }
-        Category savedCategory = categoryService.save(new Category(category.getName()));
-        return ResponseEntity.ok(savedCategory);
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Category>> getAllCategories() {
-        List<Category> categories = categoryService.findAll();
-        return ResponseEntity.ok(categories);
+        return ResponseEntity.ok(categoryService.findAll());
     }
 
     @GetMapping("/{id}")

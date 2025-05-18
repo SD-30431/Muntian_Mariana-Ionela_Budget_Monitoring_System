@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
 
 @Entity
+@XmlRootElement(name = "product")
 public class Product {
 
     @Id
@@ -26,12 +28,12 @@ public class Product {
     @NotNull(message = "Category must not be null")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
-    @JsonBackReference
+    @JsonBackReference // Prevents infinite loop with Category if needed
     private Category category;
 
-    // Optional, depends if you require it to be always set
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonBackReference(value = "user-product") // ✅ Matches User's @JsonManagedReference
     private User user;
 
     public Product() {}

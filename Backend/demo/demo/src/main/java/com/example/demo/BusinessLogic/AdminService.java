@@ -1,9 +1,15 @@
 package com.example.demo.BusinessLogic;
 
+import com.example.demo.DTO.AdminLoginRequest;
 import com.example.demo.Model.Admin;
 import com.example.demo.Repository.AdminRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -23,10 +29,26 @@ public class AdminService {
         return adminRepository.save(admin);
     }
 
-    public boolean validateAdminLogin(String username, String password) {
-        if ("admin".equals(username) && "admin".equals(password)) {
-            return true;
+    public ResponseEntity<?> login(AdminLoginRequest loginRequest) {
+        if (validateAdminLogin(loginRequest.getUsername(), loginRequest.getPassword())) {
+            Admin admin = findByUsername(loginRequest.getUsername());
+            if (admin == null) {
+                // fallback if not in DB
+                admin = new Admin("admin", "admin");
+            }
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", true);
+            response.put("admin", admin);
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, Object> response = new HashMap<>();
+            response.put("success", false);
+            response.put("message", "Invalid credentials");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
-        return false;
+    }
+
+    private boolean validateAdminLogin(String username, String password) {
+        return "admin".equals(username) && "admin".equals(password);
     }
 }

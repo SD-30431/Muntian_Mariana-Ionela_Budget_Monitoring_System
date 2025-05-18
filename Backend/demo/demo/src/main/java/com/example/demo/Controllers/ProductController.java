@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     private final ProductService productService;
@@ -19,39 +20,47 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product savedProduct = productService.save(product);
-        return ResponseEntity.ok(savedProduct);
+    public ResponseEntity<?> createProduct(@RequestBody Product product) {
+        try {
+            Product savedProduct = productService.save(product);
+            return ResponseEntity.ok(savedProduct);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAll() {
-        List<Product> products = productService.findAll();
-        return ResponseEntity.ok(products);
+        return ResponseEntity.ok(productService.findAll());
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        Product updatedProduct = productService.updateProduct(product);
-        return ResponseEntity.ok(updatedProduct);
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        try {
+            Product updatedProduct = productService.updateProduct(id, product);
+            return ResponseEntity.ok(updatedProduct);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        try {
+            productService.deleteProduct(id);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
     }
 
     @GetMapping("/grouped-by-category")
     public ResponseEntity<List<CategoryExpenseRequest>> getExpensesGroupedByCategory() {
-        List<CategoryExpenseRequest> results = productService.getExpensesGroupedByCategory();
-        return ResponseEntity.ok(results);
+        return ResponseEntity.ok(productService.getExpensesGroupedByCategory());
     }
 
-    // New endpoint to retrieve products purchased by a specific user
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Product>> getProductsByUser(@PathVariable Long userId) {
-        List<Product> products = productService.getProductsByUser(userId);
-        return ResponseEntity.ok(products);
+        return ResponseEntity.ok(productService.getProductsByUser(userId));
     }
 }

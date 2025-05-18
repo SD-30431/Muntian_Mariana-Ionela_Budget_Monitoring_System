@@ -29,10 +29,14 @@ public class UserServiceTests {
         String username = "testUser";
         User user = new User();
         user.setUsername(username);
+
         when(userRepository.findByUsername(username)).thenReturn(user);
+
         User result = userService.findByUsername(username);
+
         assertNotNull(result);
         assertEquals(username, result.getUsername());
+
         verify(userRepository, times(1)).findByUsername(username);
     }
 
@@ -40,10 +44,13 @@ public class UserServiceTests {
     public void testSave() {
         User user = new User();
         user.setUsername("testUser");
+
         when(userRepository.save(user)).thenReturn(user);
+
         User result = userService.save(user);
         assertNotNull(result);
         assertEquals("testUser", result.getUsername());
+
         verify(userRepository, times(1)).save(user);
     }
 }

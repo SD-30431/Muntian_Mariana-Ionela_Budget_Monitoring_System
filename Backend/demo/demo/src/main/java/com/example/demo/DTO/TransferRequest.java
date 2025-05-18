@@ -3,13 +3,12 @@ package com.example.demo.DTO;
 import javax.validation.constraints.*;
 
 public class TransferRequest {
-
     @NotBlank(message = "Sender card number is required")
-    @Size(min = 4, max = 20, message = "Sender card number must be between 4 and 20 characters")
+    @Size(min = 1, max = 20, message = "Sender card number must be between 1 and 20 characters")
     private String fromCard;
 
     @NotBlank(message = "Recipient card number is required")
-    @Size(min = 4, max = 20, message = "Recipient card number must be between 4 and 20 characters")
+    @Size(min = 1, max = 20, message = "Recipient card number must be between 1 and 20 characters")
     private String toCard;
 
     @NotNull(message = "Amount is required")
