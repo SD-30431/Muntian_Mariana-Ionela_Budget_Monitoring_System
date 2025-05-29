@@ -1,6 +1,6 @@
 #  📊  Budget Monitoring System
 
-A full-featured **personal finance manager** that allows users to create budgets, track expenses, generate reports, and analyze spending — all through an intuitive JavaFX frontend and a powerful Spring Boot backend.
+A full-featured **personal finance manager** that allows users to create budgets, track expenses, generate reports, and analyze spending — all through an intuitive Angular frontend and a powerful Spring Boot backend.
 
 ## Interface Preview
 
