@@ -2,7 +2,7 @@
 
 A full-featured **personal finance manager** that allows users to create budgets, track expenses, generate reports, and analyze spending — all through an intuitive JavaFX frontend and a powerful Spring Boot backend.
 
-## 📸 Interface Preview
+## Interface Preview
 
 > _Add screenshots in this folder and link them here!_
 
@@ -12,18 +12,18 @@ A full-featured **personal finance manager** that allows users to create budgets
 
 ---
 
-## 🧩 Key Features
+## Key Features
 
-- 🔐 Secure account management (hashed passwords with SHA-256)
-- 💳 Budget and card management
-- 📦 Expense tracking (add, edit, delete)
-- 📅 Filter by date/category
-- 📊 Interactive reports (e.g., pie charts by category)
-- ⚙️ Admin dashboard for user and category management
+- Secure account management (hashed passwords with SHA-256)
+- Budget and card management
+- Expense tracking (add, edit, delete)
+- Filter by date/category
+- Interactive reports (e.g., pie charts by category)
+- ⚙Admin dashboard for user and category management
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 A **3-layered MVC architecture**:
 
@@ -35,7 +35,7 @@ A **3-layered MVC architecture**:
 
 ---
 
-## 🧠 Design Patterns
+## Design Patterns
 
 This project applies multiple **GoF design patterns**:
 
@@ -45,10 +45,9 @@ This project applies multiple **GoF design patterns**:
 
 ---
 
-## 🧪 Testing & Quality
+## Testing & Quality
 
 - ✔️ JUnit 5 with Mockito for business logic testing
-- ✔️ Maven Surefire for automated test runs
 - ✔️ Isolation of layers to support unit-level robustness
 
 Example:
