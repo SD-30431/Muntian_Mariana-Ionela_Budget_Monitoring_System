@@ -19,7 +19,7 @@ A full-featured **personal finance manager** that allows users to create budgets
 - Expense tracking (add, edit, delete)
 - Filter by date/category
 - Interactive reports (e.g., pie charts by category)
-- ⚙Admin dashboard for user and category management
+- Admin dashboard for user and category management
 
 ---
 
